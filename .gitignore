@@ -154,8 +154,8 @@ cython_debug/
 [._]*.un~
 
 ## vscode
-
-notes.md
+_notes.md
+_local_notes.md
 
 # setuptools-scm generated version file
 src/*/_version.py
