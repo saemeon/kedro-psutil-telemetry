@@ -16,7 +16,7 @@
       
       
       
-        <link rel="next" href="api/">
+        <link rel="next" href="logging/">
       
       
         
@@ -339,13 +339,52 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-start" class="md-nav__link">
+  <a href="#logging" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick Start
+        Logging
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zero-config-auto-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zero-config (auto-discovery)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -361,10 +400,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
+  <a href="#all-options" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configuration
+        All options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example project
       
     </span>
   </a>
@@ -382,21 +432,37 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#auto-discovery-vs-manual-registration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Auto-discovery vs. manual registration
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="logging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -466,13 +532,52 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-start" class="md-nav__link">
+  <a href="#logging" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick Start
+        Logging
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zero-config-auto-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zero-config (auto-discovery)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -488,10 +593,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
+  <a href="#all-options" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configuration
+        All options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example project
       
     </span>
   </a>
@@ -503,17 +619,6 @@
     <span class="md-ellipsis">
       
         Custom Sinks
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#auto-discovery-vs-manual-registration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Auto-discovery vs. manual registration
       
     </span>
   </a>
@@ -550,21 +655,51 @@
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>kedro-psutil-telemetry
 </code></pre></div>
+<p>That's it. Kedro auto-discovers the hook via entry points — no <code>settings.py</code> changes needed. Metrics are logged to the console at the default 1-second interval.</p>
 <p>With MLflow support:</p>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>kedro-psutil-telemetry<span class="o">[</span>mlflow<span class="o">]</span>
 </code></pre></div>
-<h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
-<p>Register the hook in your Kedro project's <code>settings.py</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">kedro_psutil_telemetry</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelinePsutilTelemetry</span>
+<h2 id="logging">Logging<a class="headerlink" href="#logging" title="Permanent link">&para;</a></h2>
+<p>Kedro's default logging configuration only enables <code>INFO</code>-level output for the <code>kedro</code> logger namespace. Since <code>kedro_psutil_telemetry</code> lives in a separate namespace, its metrics are silently dropped unless you explicitly enable them.</p>
+<p>Add a <code>conf/logging.yml</code> to your project (Kedro picks this up automatically):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 
-<span class="c1"># Log to console (default)</span>
-<span class="n">HOOKS</span> <span class="o">=</span> <span class="p">(</span><span class="n">PipelinePsutilTelemetry</span><span class="p">(),)</span>
+<span class="nt">disable_existing_loggers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+
+<span class="nt">handlers</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">rich</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kedro.logging.RichHandler</span>
+<span class="w">    </span><span class="nt">rich_tracebacks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+
+<span class="nt">loggers</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kedro</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
+<span class="w">  </span><span class="nt">kedro_psutil_telemetry</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
+
+<span class="nt">root</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">handlers</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">rich</span><span class="p p-Indicator">]</span>
 </code></pre></div>
+<p>Without this file you will see the hook registered in <code>kedro info</code> but no telemetry output during <code>kedro run</code>. This is not a bug in the hook — it is a consequence of how Kedro scopes its default logging.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you use a custom <code>conf/logging.yml</code> already, just add <code>kedro_psutil_telemetry: {level: INFO}</code> under the <code>loggers</code> key.</p>
+</div>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="zero-config-auto-discovery">Zero-config (auto-discovery)<a class="headerlink" href="#zero-config-auto-discovery" title="Permanent link">&para;</a></h3>
+<p>Install the package and run your pipeline. Kedro registers the hook automatically with default settings (console logging, 1s interval, all metrics enabled).</p>
+<h3 id="custom-configuration">Custom configuration<a class="headerlink" href="#custom-configuration" title="Permanent link">&para;</a></h3>
+<p>To change the sink, interval, or any metric, register the hook explicitly in <code>settings.py</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">kedro_psutil_telemetry</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelinePsutilTelemetry</span><span class="p">,</span> <span class="n">mlflow_sink</span>
 
-<span class="c1"># Log to an active MLflow run</span>
-<span class="n">HOOKS</span> <span class="o">=</span> <span class="p">(</span><span class="n">PipelinePsutilTelemetry</span><span class="p">(</span><span class="n">sink</span><span class="o">=</span><span class="n">mlflow_sink</span><span class="p">),)</span>
+<span class="n">HOOKS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">PipelinePsutilTelemetry</span><span class="p">(</span>
+        <span class="n">sink</span><span class="o">=</span><span class="n">mlflow_sink</span><span class="p">,</span>  <span class="c1"># log to MLflow instead of console</span>
+        <span class="n">interval</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>      <span class="c1"># sample every 2 seconds</span>
+    <span class="p">),</span>
+<span class="p">)</span>
 </code></pre></div>
+<p>Manual registration takes precedence — Kedro won't double-register the hook.</p>
 <h2 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h2>
 <p>All metrics are tagged with the currently-running node name and use the configurable <code>prefix</code> (default: <code>"pipeline"</code>).</p>
 <table>
@@ -606,7 +741,7 @@
 </tbody>
 </table>
 <p>A peak-RSS and peak-CPU summary is logged at the end of every run.</p>
-<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<h2 id="all-options">All options<a class="headerlink" href="#all-options" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">HOOKS</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">PipelinePsutilTelemetry</span><span class="p">(</span>
         <span class="n">sink</span><span class="o">=</span><span class="n">mlflow_sink</span><span class="p">,</span>      <span class="c1"># or a list of sinks, or your own callable</span>
@@ -619,6 +754,8 @@
     <span class="p">),</span>
 <span class="p">)</span>
 </code></pre></div>
+<h2 id="example-project">Example project<a class="headerlink" href="#example-project" title="Permanent link">&para;</a></h2>
+<p>A minimal Kedro project demonstrating the hook in action is available at <a href="https://github.com/saemeon/kedro-hooks-test-project">github.com/saemeon/kedro-hooks-test-project</a>. Clone it to see the full setup and expected output.</p>
 <h2 id="custom-sinks">Custom Sinks<a class="headerlink" href="#custom-sinks" title="Permanent link">&para;</a></h2>
 <p>Any callable matching <code>(name: str, value: float, step: int, tags: dict | None) -&gt; None</code> works as a sink:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">my_sink</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -626,8 +763,6 @@
 
 <span class="n">HOOKS</span> <span class="o">=</span> <span class="p">(</span><span class="n">PipelinePsutilTelemetry</span><span class="p">(</span><span class="n">sink</span><span class="o">=</span><span class="n">my_sink</span><span class="p">),)</span>
 </code></pre></div>
-<h2 id="auto-discovery-vs-manual-registration">Auto-discovery vs. manual registration<a class="headerlink" href="#auto-discovery-vs-manual-registration" title="Permanent link">&para;</a></h2>
-<p>Installing the package registers <code>PipelinePsutilTelemetry</code> as a Kedro hook entry point so Kedro can discover it automatically with default settings. For any customisation (<code>sink</code>, <code>interval</code>, <code>prefix</code>, etc.) register the hook manually in <code>settings.py</code> as shown above — the entry point instantiates with defaults only.</p>
 
 
 

@@ -12,25 +12,31 @@
         <meta name="author" content="Simon Niederberger">
       
       
+        <link rel="canonical" href="https://saemeon.github.io/kedro-psutil-telemetry/logging/">
       
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../api/">
       
       
         
       
       
-      <link rel="icon" href="/kedro-psutil-telemetry/assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>kedro-psutil-telemetry</title>
+        <title>Logging - kedro-psutil-telemetry</title>
       
     
     
-      <link rel="stylesheet" href="/kedro-psutil-telemetry/assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="/kedro-psutil-telemetry/assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,9 +55,9 @@
       
     
     
-      <link rel="stylesheet" href="/kedro-psutil-telemetry/assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL("/kedro-psutil-telemetry/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -75,6 +81,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#logging" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -91,7 +102,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/kedro-psutil-telemetry/." title="kedro-psutil-telemetry" class="md-header__button md-logo" aria-label="kedro-psutil-telemetry" data-md-component="logo">
+    <a href=".." title="kedro-psutil-telemetry" class="md-header__button md-logo" aria-label="kedro-psutil-telemetry" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -111,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Logging
             
           </span>
         </div>
@@ -229,7 +240,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/kedro-psutil-telemetry/." title="kedro-psutil-telemetry" class="md-nav__button md-logo" aria-label="kedro-psutil-telemetry" data-md-component="logo">
+    <a href=".." title="kedro-psutil-telemetry" class="md-nav__button md-logo" aria-label="kedro-psutil-telemetry" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -259,7 +270,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/kedro-psutil-telemetry/." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -283,10 +294,19 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/kedro-psutil-telemetry/logging/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -302,6 +322,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -313,7 +334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/kedro-psutil-telemetry/api/" class="md-nav__link">
+      <a href="../api/" class="md-nav__link">
         
   
   
@@ -350,6 +371,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -362,8 +385,57 @@
               
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+  
+    <a href="https://github.com/saemeon/kedro-psutil-telemetry/edit/master/docs/logging.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="logging">Logging<a class="headerlink" href="#logging" title="Permanent link">&para;</a></h1>
+<p>Kedro's default logging configuration only enables <code>INFO</code>-level output for the <code>kedro</code> logger namespace. Since <code>kedro_psutil_telemetry</code> lives in a separate namespace, its metrics are silently dropped unless you explicitly enable them.</p>
+<p>Add a <code>conf/logging.yml</code> to your project (Kedro picks this up automatically):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+
+<span class="nt">disable_existing_loggers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+
+<span class="nt">handlers</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">rich</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kedro.logging.RichHandler</span>
+<span class="w">    </span><span class="nt">rich_tracebacks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+
+<span class="nt">loggers</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kedro</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
+<span class="w">  </span><span class="nt">kedro_psutil_telemetry</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
+
+<span class="nt">root</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">handlers</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">rich</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>Without this file you will see the hook registered in <code>kedro info</code> but no telemetry output during <code>kedro run</code>. This is not a bug in the hook — it is a consequence of how Kedro scopes its default logging.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you use a custom <code>conf/logging.yml</code> already, just add <code>kedro_psutil_telemetry: {level: INFO}</code> under the <code>loggers</code> key.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -428,10 +500,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/kedro-psutil-telemetry/", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.top", "navigation.tracking", "content.action.edit", "search.highlight", "search.suggest"], "search": "/kedro-psutil-telemetry/assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.top", "navigation.tracking", "content.action.edit", "search.highlight", "search.suggest"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="/kedro-psutil-telemetry/assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
