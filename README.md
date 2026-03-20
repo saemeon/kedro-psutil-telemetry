@@ -114,6 +114,10 @@ def my_sink(name, value, step, tags=None):
 HOOKS = (PipelinePsutilTelemetry(sink=my_sink),)
 ```
 
+## Example project
+
+A minimal Kedro project demonstrating the hook in action is available at [github.com/saemeon/kedro-hooks-test-project](https://github.com/saemeon/kedro-hooks-test-project). Clone it to see the full setup and expected output.
+
 ## License
 
 MIT

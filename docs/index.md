@@ -102,6 +102,10 @@ HOOKS = (
 )
 ```
 
+## Example project
+
+A minimal Kedro project demonstrating the hook in action is available at [github.com/saemeon/kedro-hooks-test-project](https://github.com/saemeon/kedro-hooks-test-project). Clone it to see the full setup and expected output.
+
 ## Custom Sinks
 
 Any callable matching `(name: str, value: float, step: int, tags: dict | None) -> None` works as a sink:
