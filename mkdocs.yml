@@ -10,6 +10,7 @@ copyright: "Copyright &copy; 2026 Simon Niederberger"
 
 nav:
   - Overview: "index.md"
+  - Logging: "logging.md"
   - API Reference: "api.md"
 
 theme:

@@ -26,6 +26,28 @@ With MLflow support:
 pip install kedro-psutil-telemetry[mlflow]
 ```
 
+## Logging
+
+Kedro's default logging only covers the `kedro` namespace. Add a `conf/logging.yml` to your project so the hook's output is visible:
+
+```yaml
+version: 1
+disable_existing_loggers: False
+handlers:
+  rich:
+    class: kedro.logging.RichHandler
+    rich_tracebacks: True
+loggers:
+  kedro:
+    level: INFO
+  kedro_psutil_telemetry:
+    level: INFO
+root:
+  handlers: [rich]
+```
+
+Without this, `kedro info` will show the hook as registered but `kedro run` will produce no telemetry output.
+
 ## Usage
 
 ### Zero-config (auto-discovery)
