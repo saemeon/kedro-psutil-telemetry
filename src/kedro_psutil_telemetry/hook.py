@@ -38,6 +38,9 @@ def console_sink(
     logger.info("Telemetry %s=%.3f step=%d%s", name, value, step, tag_str)
 
 
+_mlflow_warned = False
+
+
 def mlflow_sink(
     name: str, value: float, step: int, tags: dict[str, Any] | None = None
 ) -> None:
@@ -46,13 +49,16 @@ def mlflow_sink(
     Tags are not forwarded — MLflow does not support per-metric tags.
     No-op if MLflow is not installed or no run is active.
     """
+    global _mlflow_warned
     try:
         import mlflow
 
         if mlflow.active_run():
             mlflow.log_metric(name, value, step=step)
     except ImportError:
-        logger.warning("mlflow not installed; mlflow_sink is a no-op.")
+        if not _mlflow_warned:
+            logger.warning("mlflow not installed; mlflow_sink is a no-op.")
+            _mlflow_warned = True
 
 
 # --- Hook ---
