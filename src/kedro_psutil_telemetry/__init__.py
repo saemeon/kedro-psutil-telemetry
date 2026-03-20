@@ -1,11 +1,11 @@
 # Copyright (c) Simon Niederberger.
 # Distributed under the terms of the MIT License.
 
-from .hook import PipelineSystemTrace
+from .hook import PipelinePsutilTelemetry, TelemetrySink, console_sink, mlflow_sink
 
 try:
     from ._version import __version__
 except ImportError:
     __version__ = "unknown"
 
-__all__ = ["PipelineSystemTrace"]
+__all__ = ["PipelinePsutilTelemetry", "TelemetrySink", "console_sink", "mlflow_sink"]

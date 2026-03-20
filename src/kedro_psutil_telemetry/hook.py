@@ -4,7 +4,7 @@ import logging
 import os
 import threading
 import time
-from typing import Any, Dict, List, Protocol
+from typing import Any, Protocol
 
 import psutil
 from kedro.framework.hooks import hook_impl
@@ -26,12 +26,12 @@ class TelemetrySink(Protocol):
     """
 
     def __call__(
-        self, name: str, value: float, step: int, tags: Dict[str, Any] | None = None
+        self, name: str, value: float, step: int, tags: dict[str, Any] | None = None
     ) -> None: ...
 
 
 def console_sink(
-    name: str, value: float, step: int, tags: Dict[str, Any] | None = None
+    name: str, value: float, step: int, tags: dict[str, Any] | None = None
 ) -> None:
     """Sink that logs metrics via the Python logger."""
     tag_str = f" {tags}" if tags else ""
@@ -39,7 +39,7 @@ def console_sink(
 
 
 def mlflow_sink(
-    name: str, value: float, step: int, tags: Dict[str, Any] | None = None
+    name: str, value: float, step: int, tags: dict[str, Any] | None = None
 ) -> None:
     """Sink that logs metrics to an active MLflow run.
 
@@ -58,7 +58,7 @@ def mlflow_sink(
 # --- Hook ---
 
 
-class PipelineSystemTrace:
+class PipelinePsutilTelemetry:
     """
     Kedro hook that samples system resources in a background thread and
     dispatches metrics to one or more pluggable sinks.
@@ -76,17 +76,17 @@ class PipelineSystemTrace:
 
     Example (settings.py)::
 
-        from kedro_psutil_telemetry.hook import PipelineSystemTrace, mlflow_sink
+        from kedro_psutil_telemetry.hook import PipelinePsutilTelemetry, mlflow_sink
 
         HOOKS = (
-            PipelineSystemTrace(interval=0.5, sink=mlflow_sink),
+            PipelinePsutilTelemetry(interval=0.5, sink=mlflow_sink),
         )
     """
 
     def __init__(
         self,
         *,
-        sink: TelemetrySink | List[TelemetrySink] | None = None,
+        sink: TelemetrySink | list[TelemetrySink] | None = None,
         interval: float = 1.0,
         include_children: bool = True,
         prefix: str = "pipeline",
@@ -106,15 +106,23 @@ class PipelineSystemTrace:
         self._metric_mem = f"{prefix}.mem.rss_mb" if memory is True else memory
         self._metric_swap = f"{prefix}.mem.swap_mb" if swap is True else swap
         self._metric_cpu = f"{prefix}.cpu.percent" if cpu is True else cpu
-        self._metric_disk_read = f"{prefix}.io.read_mb" if disk_read is True else disk_read
-        self._metric_disk_write = f"{prefix}.io.write_mb" if disk_write is True else disk_write
-        self._metric_net_sent = f"{prefix}.net.sent_mbs" if net_sent is True else net_sent
-        self._metric_net_recv = f"{prefix}.net.recv_mbs" if net_recv is True else net_recv
+        self._metric_disk_read = (
+            f"{prefix}.io.read_mb" if disk_read is True else disk_read
+        )
+        self._metric_disk_write = (
+            f"{prefix}.io.write_mb" if disk_write is True else disk_write
+        )
+        self._metric_net_sent = (
+            f"{prefix}.net.sent_mbs" if net_sent is True else net_sent
+        )
+        self._metric_net_recv = (
+            f"{prefix}.net.recv_mbs" if net_recv is True else net_recv
+        )
 
         if sink is None:
-            self._sinks: List[TelemetrySink] = [console_sink]
+            self._sinks: list[TelemetrySink] = [console_sink]
         elif isinstance(sink, list):
-            self._sinks = sink
+            self._sinks = list(sink)
         else:
             self._sinks = [sink]
 
@@ -142,7 +150,9 @@ class PipelineSystemTrace:
         self._peak_rss_mb = 0.0
         self._peak_cpu_pct = 0.0
 
-        self._proc.cpu_percent(interval=None)  # prime CPU baseline (first call returns 0)
+        self._proc.cpu_percent(
+            interval=None
+        )  # prime CPU baseline (first call returns 0)
         self._net_prev = psutil.net_io_counters()
         self._io_prev = psutil.disk_io_counters()
         self._last_sample_time = time.monotonic()
@@ -175,7 +185,7 @@ class PipelineSystemTrace:
         while not self._stop_evt.wait(self.interval):
             self._record_sample()
 
-    def _emit(self, name: str, value: float, tags: Dict[str, Any]) -> None:
+    def _emit(self, name: str, value: float, tags: dict[str, Any]) -> None:
         for sink in self._sinks:
             try:
                 sink(name, value, self._step, tags=tags)
@@ -186,7 +196,7 @@ class PipelineSystemTrace:
         if not self._proc:
             return
 
-        tags: Dict[str, Any] = {"node": self._current_node}
+        tags: dict[str, Any] = {"node": self._current_node}
 
         now = time.monotonic()
         elapsed = now - self._last_sample_time
@@ -234,7 +244,9 @@ class PipelineSystemTrace:
 
             if self._metric_net_sent or self._metric_net_recv:
                 net = psutil.net_io_counters()
-                per_sec = BYTES2MB / elapsed if elapsed > 0 else BYTES2MB / self.interval
+                per_sec = (
+                    BYTES2MB / elapsed if elapsed > 0 else BYTES2MB / self.interval
+                )
                 if self._metric_net_sent:
                     self._emit(
                         self._metric_net_sent,
