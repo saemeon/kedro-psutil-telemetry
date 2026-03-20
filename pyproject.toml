@@ -1,8 +1,8 @@
 [project]
-name = "mypackage"
+name = "kedro-psutil-telemetry"
 dynamic = ["version"]
-description = "A short description of your package"
-keywords = ["keyword1", "keyword2"]
+description = "Kedro hook to trace system resources (Memory, CPU, Disk I/O, Network, Swap) during pipeline execution and log them to MLflow"
+keywords = ["kedro", "mlflow", "psutil", "telemetry", "monitoring", "hook"]
 classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
@@ -10,6 +10,8 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Operating System :: OS Independent",
+    "Framework :: Kedro",
+    "Topic :: System :: Monitoring",
 ]
 readme = "README.md"
 license = "MIT"
@@ -20,11 +22,15 @@ maintainers = [
     { name = "Simon Niederberger", email = "s.niederberger@hotmail.com" },
 ]
 requires-python = ">=3.9"
-dependencies = []
+dependencies = [
+    "kedro>=0.18",
+    "psutil>=5.8",
+    "mlflow>=2.0",
+]
 
 [project.urls]
-Homepage = "https://github.com/saemeon/mypackage"
-Repository = "https://github.com/saemeon/mypackage"
+Homepage = "https://github.com/saemeon/kedro-psutil-telemetry"
+Repository = "https://github.com/saemeon/kedro-psutil-telemetry"
 
 [dependency-groups]
 test = ["pytest", "pytest-cov"]
@@ -47,22 +53,22 @@ requires = ["setuptools>=61.0", "wheel", "setuptools-scm>=8.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
-write_to = "src/mypackage/_version.py"
+write_to = "src/kedro_psutil_telemetry/_version.py"
 version_scheme = "post-release"
 local_scheme = "no-local-version"
 
 [tool.setuptools.dynamic]
-version = { attr = "mypackage._version.__version__" }
+version = { attr = "kedro_psutil_telemetry._version.__version__" }
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-mypackage = ["py.typed"]
+kedro_psutil_telemetry = ["py.typed"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "--cov=src/mypackage --cov-report=term-missing"
+addopts = "--cov=src/kedro_psutil_telemetry --cov-report=term-missing"
 
 [tool.ty.src]
 include = ["src"]

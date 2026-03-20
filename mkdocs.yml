@@ -1,10 +1,10 @@
-site_name: mypackage
-site_description: A short description of your package
+site_name: kedro-psutil-telemetry
+site_description: Kedro hook to trace system resources during pipeline execution and log them to MLflow
 site_author: Simon Niederberger
-site_url: https://saemeon.github.io/mypackage/
+site_url: https://saemeon.github.io/kedro-psutil-telemetry/
 
-repo_url: https://github.com/saemeon/mypackage
-repo_name: saemeon/mypackage
+repo_url: https://github.com/saemeon/kedro-psutil-telemetry
+repo_name: saemeon/kedro-psutil-telemetry
 
 copyright: "Copyright &copy; 2026 Simon Niederberger"
 
@@ -135,4 +135,4 @@ extra:
     default: latest
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/saemeon/mypackage
+      link: https://github.com/saemeon/kedro-psutil-telemetry

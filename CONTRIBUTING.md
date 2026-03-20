@@ -1,12 +1,12 @@
 # Contributing
 
-Bug reports, feature requests, and pull requests are welcome on [GitHub](https://github.com/saemeon/mypackage/issues).
+Bug reports, feature requests, and pull requests are welcome on [GitHub](https://github.com/saemeon/kedro-psutil-telemetry/issues).
 
 ## Development setup
 
 ```bash
-git clone https://github.com/saemeon/mypackage
-cd mypackage
+git clone https://github.com/saemeon/kedro-psutil-telemetry
+cd kedro-psutil-telemetry
 uv sync --group dev
 ```
 
