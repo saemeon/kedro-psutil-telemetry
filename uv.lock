@@ -1197,6 +1197,7 @@ dev = [
     { name = "mkdocs" },
     { name = "mkdocs-material" },
     { name = "mkdocstrings", extra = ["python"] },
+    { name = "mlflow" },
     { name = "prek" },
     { name = "pytest" },
     { name = "pytest-cov" },
@@ -1210,6 +1211,7 @@ doc = [
     { name = "mkdocstrings", extra = ["python"] },
 ]
 test = [
+    { name = "mlflow" },
     { name = "pytest" },
     { name = "pytest-cov" },
 ]
@@ -1228,6 +1230,7 @@ dev = [
     { name = "mkdocs" },
     { name = "mkdocs-material" },
     { name = "mkdocstrings", extras = ["python"] },
+    { name = "mlflow" },
     { name = "prek" },
     { name = "pytest" },
     { name = "pytest-cov" },
@@ -1241,6 +1244,7 @@ doc = [
     { name = "mkdocstrings", extras = ["python"] },
 ]
 test = [
+    { name = "mlflow" },
     { name = "pytest" },
     { name = "pytest-cov" },
 ]

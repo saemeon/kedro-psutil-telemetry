@@ -8,6 +8,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Operating System :: OS Independent",
     "Framework :: Kedro",
     "Topic :: System :: Monitoring",
@@ -34,7 +35,7 @@ Homepage = "https://github.com/saemeon/kedro-psutil-telemetry"
 Repository = "https://github.com/saemeon/kedro-psutil-telemetry"
 
 [dependency-groups]
-test = ["pytest", "pytest-cov"]
+test = ["pytest", "pytest-cov", "mlflow"]
 doc = ["mkdocs", "mkdocs-material", "mkdocstrings[python]", "mike"]
 dev = [
     "ruff",
