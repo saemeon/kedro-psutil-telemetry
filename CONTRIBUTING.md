@@ -12,9 +12,12 @@ uv sync --group dev
 
 Pre-commit hooks are managed with [prek](https://github.com/saemeon/prek). They run automatically on `git commit` once you have installed the dev dependencies.
 
-## Running tests
+## Running checks
 
 ```bash
+uv run ruff check .
+uv run ruff format --check .
+uv run ty check
 uv run pytest
 ```
 
