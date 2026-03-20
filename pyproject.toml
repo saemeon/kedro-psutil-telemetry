@@ -27,7 +27,7 @@ dependencies = ["kedro>=0.18", "psutil>=5.8"]
 mlflow = ["mlflow>=2.0"]
 
 [project.entry-points."kedro.hooks"]
-psutil_telemetry = "kedro_psutil_telemetry:hook"
+psutil_telemetry = "kedro_psutil_telemetry:psutil_telemetry_hook"
 
 [project.urls]
 Homepage = "https://github.com/saemeon/kedro-psutil-telemetry"

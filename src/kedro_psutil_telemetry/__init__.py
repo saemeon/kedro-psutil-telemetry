@@ -8,12 +8,12 @@ try:
 except ImportError:
     __version__ = "unknown"
 
-hook = PipelinePsutilTelemetry()
+psutil_telemetry_hook = PipelinePsutilTelemetry()
 
 __all__ = [
     "PipelinePsutilTelemetry",
     "TelemetrySink",
     "console_sink",
-    "hook",
     "mlflow_sink",
+    "psutil_telemetry_hook",
 ]
