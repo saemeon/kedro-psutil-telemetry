@@ -8,29 +8,36 @@ A Kedro hook that continuously samples system resources in a background thread d
 pip install kedro-psutil-telemetry
 ```
 
+That's it. Kedro auto-discovers the hook via entry points — no `settings.py` changes needed. Metrics are logged to the console at the default 1-second interval.
+
 With MLflow support:
 
 ```bash
 pip install kedro-psutil-telemetry[mlflow]
 ```
 
-## Quick Start
+## Usage
 
-Register the hook in your Kedro project's `settings.py`:
+### Zero-config (auto-discovery)
 
-```python
-from kedro_psutil_telemetry import PipelinePsutilTelemetry
+Install the package and run your pipeline. Kedro registers the hook automatically with default settings (console logging, 1s interval, all metrics enabled).
 
-# Log to console (default)
-HOOKS = (PipelinePsutilTelemetry(),)
-```
+### Custom configuration
+
+To change the sink, interval, or any metric, register the hook explicitly in `settings.py`:
 
 ```python
 from kedro_psutil_telemetry import PipelinePsutilTelemetry, mlflow_sink
 
-# Log to an active MLflow run
-HOOKS = (PipelinePsutilTelemetry(sink=mlflow_sink),)
+HOOKS = (
+    PipelinePsutilTelemetry(
+        sink=mlflow_sink,  # log to MLflow instead of console
+        interval=2.0,      # sample every 2 seconds
+    ),
+)
 ```
+
+Manual registration takes precedence — Kedro won't double-register the hook.
 
 ## Metrics
 
@@ -48,7 +55,7 @@ All metrics are tagged with the currently-running node name and use the configur
 
 A peak-RSS and peak-CPU summary is logged at the end of every run.
 
-## Configuration
+## All options
 
 ```python
 HOOKS = (
@@ -74,7 +81,3 @@ def my_sink(name, value, step, tags=None):
 
 HOOKS = (PipelinePsutilTelemetry(sink=my_sink),)
 ```
-
-## Auto-discovery vs. manual registration
-
-Installing the package registers `PipelinePsutilTelemetry` as a Kedro hook entry point so Kedro can discover it automatically with default settings. For any customisation (`sink`, `interval`, `prefix`, etc.) register the hook manually in `settings.py` as shown above — the entry point instantiates with defaults only.
