@@ -287,4 +287,4 @@ class PipelinePsutilTelemetry:
                 yield root_proc
                 yield from root_proc.children(recursive=True)
             except psutil.Error:
-                yield root_proc
+                pass

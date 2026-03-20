@@ -1,5 +1,5 @@
-import mypackage
+import kedro_psutil_telemetry
 
 
 def test_import():
-    assert mypackage.__version__ != "unknown"
+    assert kedro_psutil_telemetry.__version__ != "unknown"

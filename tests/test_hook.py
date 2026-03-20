@@ -7,8 +7,6 @@ import psutil
 import pytest
 
 from kedro_psutil_telemetry import PipelinePsutilTelemetry, console_sink, mlflow_sink
-from kedro_psutil_telemetry.hook import BYTES2MB
-
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -166,7 +164,9 @@ def test_full_lifecycle(mock_cpu, mock_swap, mock_disk, mock_net, mock_proc_cls)
 @patch("kedro_psutil_telemetry.hook.psutil.disk_io_counters")
 @patch("kedro_psutil_telemetry.hook.psutil.swap_memory")
 @patch("kedro_psutil_telemetry.hook.psutil.cpu_percent", return_value=0.0)
-def test_on_pipeline_error_shuts_down(mock_cpu, mock_swap, mock_disk, mock_net, mock_proc_cls):
+def test_on_pipeline_error_shuts_down(
+    mock_cpu, mock_swap, mock_disk, mock_net, mock_proc_cls
+):
     proc = MagicMock()
     proc.memory_info.return_value = MagicMock(rss=0)
     proc.children.return_value = []
@@ -220,7 +220,10 @@ def test_iter_procs_skips_dead_child_in_memory_sum():
     hook._last_sample_time = time.monotonic()
 
     with (
-        patch("kedro_psutil_telemetry.hook.psutil.swap_memory", return_value=MagicMock(used=0)),
+        patch(
+            "kedro_psutil_telemetry.hook.psutil.swap_memory",
+            return_value=MagicMock(used=0),
+        ),
         patch("kedro_psutil_telemetry.hook.psutil.cpu_percent", return_value=0.0),
         patch("kedro_psutil_telemetry.hook.psutil.disk_io_counters") as mock_disk,
         patch("kedro_psutil_telemetry.hook.psutil.net_io_counters") as mock_net,
@@ -243,5 +246,6 @@ def test_iter_procs_skips_dead_child_in_memory_sum():
 def test_mlflow_sink_noop_when_not_installed():
     """mlflow_sink should not raise when mlflow is absent."""
     import sys
+
     with patch.dict(sys.modules, {"mlflow": None}):
         mlflow_sink("metric", 1.0, 0)  # must not raise
