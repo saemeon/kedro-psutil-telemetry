@@ -1,5 +1,7 @@
 [![PyPI](https://img.shields.io/pypi/v/kedro-psutil-telemetry)](https://pypi.org/project/kedro-psutil-telemetry/)
 [![Python](https://img.shields.io/pypi/pyversions/kedro-psutil-telemetry)](https://pypi.org/project/kedro-psutil-telemetry/)
+[![Kedro](https://img.shields.io/badge/kedro-%3E%3D0.18-ffd900)](https://kedro.org)
+[![pluggy](https://img.shields.io/badge/pluggy-%3E%3D1.6-blue)](https://pluggy.readthedocs.io)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
